@@ -1,0 +1,17 @@
+.home-video {
+  position: relative;
+
+  .video-holder {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $color-accent, $alpha: 0.8);
+  }
+}

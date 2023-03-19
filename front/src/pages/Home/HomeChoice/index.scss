@@ -1,0 +1,15 @@
+.home-choice {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  @include small-mobile-view {
+    flex-direction: column;
+  }
+
+  @include tablet-view {
+    flex-direction: row;
+    padding: 20px;
+    gap: 30px;
+  }
+}

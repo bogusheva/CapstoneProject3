@@ -1,0 +1,39 @@
+.right-navbar {
+  width: 80px;
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.07rem;
+  line-height: 2;
+
+  @include small-mobile-view {
+    right: 2px;
+  }
+  @include tablet-view {
+    width: 270px;
+    position: static;
+    font-size: 1rem;
+  }
+  @include desktop-view {
+    width: 348px;
+    justify-content: flex-end;
+    gap: 25px;
+  }
+
+  & > * {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .not-mobile-view {
+    @include tablet-view {
+      padding-left: 5px;
+    }
+  }
+}

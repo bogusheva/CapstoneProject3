@@ -1,0 +1,11 @@
+.not-found {
+  align-items: center;
+  text-align: center;
+}
+
+.help-section-container.not-found {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0;
+}

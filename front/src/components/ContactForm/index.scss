@@ -1,0 +1,36 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background-color: rgba($color: $color-base-dark, $alpha: 0.5);
+  padding: 20px 30px 20px;
+  max-width: 500px;
+  color: $color-accent;
+
+  label {
+    display: block;
+    width: 200px;
+  }
+  input,
+  textarea {
+    display: block;
+    padding-bottom: 5px;
+    text-indent: 5px;
+    font-size: 0.9rem;
+    @include tablet-view {
+      font-size: 1.1rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    color: $color-danger;
+  }
+  .button {
+    max-width: 120px;
+    margin: 0 auto;
+    display: flex;
+    padding: 5px 15px;
+    margin-top: 10px;
+  }
+}
