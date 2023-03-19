@@ -7,6 +7,8 @@ import IntroBlogArticle from "../IntroBlogArticle";
 import About from "../../pages/About";
 import Contact from "../../pages/Contact";
 import Login from "../../pages/Login";
+import Favorites from "../../pages/Favorites";
+import Cart from "../../pages/Cart";
 import Faqs from "../../pages/Faqs";
 import PrivacyPolicy from "../../pages/PrivacyPolicy";
 import Shipping from "../../pages/Shipping";
@@ -42,6 +44,8 @@ export default function Main() {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faqs" element={<Faqs />} />

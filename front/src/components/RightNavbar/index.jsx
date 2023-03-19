@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Favorites from "../Favorites";
-import Basket from "../Basket";
 
 export default function RightNavbar() {
   const [localStorageData, setLocalStorageData] = useState({});
@@ -16,8 +14,16 @@ export default function RightNavbar() {
     <div className="right-navbar">
       {localStorageData.login && (
         <>
-          <Favorites />
-          <Basket />
+          <Link to={"./favorites"}>
+            <span className="icon-heart">
+              <span className="not-mobile-view">Favorites</span>
+            </span>
+          </Link>
+          <Link to={"./cart"}>
+            <span className="icon-cart">
+              <span className="not-mobile-view">Cart</span>
+            </span>
+          </Link>
         </>
       )}
       <Link to={"./login"}>
