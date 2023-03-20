@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home";
 import Shop from "../../pages/Shop";
 import Blog from "../../pages/Blog";
-import BlogPage from "../BlogPage";
-import IntroBlogArticle from "../IntroBlogArticle";
 import About from "../../pages/About";
 import Contact from "../../pages/Contact";
 import Login from "../../pages/Login";
@@ -14,12 +12,14 @@ import PrivacyPolicy from "../../pages/PrivacyPolicy";
 import Shipping from "../../pages/Shipping";
 import Payments from "../../pages/Payments";
 import NotFound from "../../pages/NotFound";
+import BlogPage from "../BlogPage";
+import IntroBlogArticle from "../IntroBlogArticle";
 import Article from "../Article";
+import ProductCardBig from "../ProductCardBig/";
+import ProductsContainer from "../ProductsContainer";
+import BlogThemeContainer from "../BlogThemeContainer";
 
 import { blogContent } from "../../data/articles";
-
-import "../../index.scss";
-import BlogThemeContainer from "../BlogThemeContainer";
 
 export default function Main() {
   return (
@@ -27,7 +27,12 @@ export default function Main() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={<Shop />}>
+          <Route index element={<ProductsContainer />} />
+          <Route path=":id" element={<ProductCardBig />}></Route>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+
         <Route path="/blog" element={<Blog blogContent={blogContent} />}>
           <Route index element={<IntroBlogArticle />} />
           <Route

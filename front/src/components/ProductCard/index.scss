@@ -12,6 +12,8 @@
     font-weight: $weight-base;
     line-height: 1.27;
     letter-spacing: 0em;
+    height: 50px;
+    text-align: center;
     text-transform: capitalize;
 
     @include tablet-view {
@@ -24,5 +26,15 @@
 
   .product-price {
     color: $color-neutral;
+  }
+
+  .img-holder {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
   }
 }

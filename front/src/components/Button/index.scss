@@ -76,6 +76,29 @@
   }
 }
 
+.button-left {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid $color-accent;
+  color: $color-accent;
+  background-color: $color-base-dark;
+  font-size: 20px;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-base-dark;
+    background-color: $color-accent;
+    border: 1px solid $color-base-dark;
+  }
+}
+
 .video-button {
   position: absolute;
   top: 50%;

@@ -1,0 +1,108 @@
+.product-item-page {
+  max-width: $maxWidth-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: $color-accent;
+  padding: 20px 10px 80px;
+
+  .item-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    min-height: 50vh;
+
+    .item-description-container {
+      width: 60%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 30px;
+      padding: 20px 20px 20px 0;
+
+      h2 {
+        font-weight: $weight-maxbold;
+      }
+
+      h4 {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 1.2rem;
+        text-align: justify;
+      }
+      .stars-container {
+        padding-top: 15px;
+      }
+
+      .button {
+        display: block;
+        align-self: flex-end;
+      }
+    }
+  }
+  .reviews-container {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    gap: 15px;
+    .card-item {
+      padding: 5px;
+      justify-content: flex-start;
+      .card-text {
+        font-size: 1.3rem;
+        max-width: 400px;
+      }
+    }
+  }
+}
+.item-slider-container {
+  width: 40%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: flex-start;
+
+  .small-images-container {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    cursor: pointer;
+    img {
+      width: 100%;
+    }
+  }
+
+  .main-photo-container {
+    width: calc(75% - 10px);
+    position: relative;
+    img {
+      width: 100%;
+    }
+
+    .heart-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-50%, 50%);
+      cursor: pointer;
+
+      .icon-heart-broken,
+      .icon-heart {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

@@ -1,5 +1,3 @@
-import "../../index.scss";
-
 export default function ProductCard(props) {
   return (
     <div className="product-item">
