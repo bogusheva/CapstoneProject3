@@ -3,6 +3,13 @@ import ProductCard from "../../components/ProductCard";
 
 export default function Favorites() {
   const [favoriteData, setFavoriteData] = useState([]);
+  const [cartData, setCartData] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")) {
+      setCartData(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("favorite")) {
@@ -23,6 +30,10 @@ export default function Favorites() {
               title={item.title}
               price={item.price}
               link={`/shop/product${item.id}`}
+              favoriteData={favoriteData}
+              setFavoriteData={setFavoriteData}
+              cartData={cartData}
+              setCartData={setCartData}
             />
           ))}
         </div>

@@ -13,6 +13,7 @@ export default function Cart() {
 
   function removeItem(id) {
     const newCartData = cartData.filter((item) => item.id !== id);
+    setCartData(newCartData);
     localStorage.setItem("cart", JSON.stringify(newCartData));
   }
 

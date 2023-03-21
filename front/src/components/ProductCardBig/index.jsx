@@ -27,11 +27,14 @@ export default function ProductCardBig() {
   useEffect(() => {
     if (localStorage.getItem("favorite")) {
       setFavoriteData(JSON.parse(localStorage.getItem("favorite")));
-      if (favoriteData.find((item) => item.id === productId)) {
-        setIsFavorite(true);
-      }
     }
   }, []);
+
+  useEffect(() => {
+    if (favoriteData.find((item) => item.id === productId)) {
+      setIsFavorite(true);
+    }
+  }, [favoriteData, productId]);
 
   const GET_PRODUCT = gql`
     query GetProducts {
@@ -106,6 +109,7 @@ export default function ProductCardBig() {
       localStorage.setItem("cart", JSON.stringify([...cartData, cartItem]));
     }
   }
+
   function addToFavorites() {
     if (localStorage.getItem("favorite")) {
       setFavoriteData(JSON.parse(localStorage.getItem("favorite")));
@@ -129,6 +133,7 @@ export default function ProductCardBig() {
         (item) => item.id !== productId
       );
       setIsFavorite(false);
+      setFavoriteData(newFavoriteData);
       localStorage.setItem("favorite", JSON.stringify(newFavoriteData));
     }
   }

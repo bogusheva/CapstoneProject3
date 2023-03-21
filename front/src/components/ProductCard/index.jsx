@@ -2,25 +2,15 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {
-  const [cartData, setCartData] = useState([]);
-  const [favoriteData, setFavoriteData] = useState([]);
+  const { cartData, setCartData, setFavoriteData, favoriteData } = props;
 
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("cart")) {
-      setCartData(JSON.parse(localStorage.getItem("cart")));
+    if (favoriteData.find((item) => item.id === props.id)) {
+      setIsFavorite(true);
     }
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("favorite")) {
-      setFavoriteData(JSON.parse(localStorage.getItem("favorite")));
-      if (favoriteData.find((item) => item.id === props.id)) {
-        setIsFavorite(true);
-      }
-    }
-  }, []);
+  }, [favoriteData, props.id]);
 
   function addToCart() {
     const cartItem = {
@@ -62,6 +52,7 @@ export default function ProductCard(props) {
       );
       setIsFavorite(false);
       localStorage.setItem("favorite", JSON.stringify(newFavoriteData));
+      setFavoriteData(newFavoriteData);
     }
   }
 
