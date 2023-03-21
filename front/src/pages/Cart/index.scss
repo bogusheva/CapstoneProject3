@@ -1,7 +1,7 @@
-.favorites-section {
+.cart-section {
   background-image: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.1) 10%,
+      rgba(255, 255, 255, 0.1) 5%,
       rgba(255, 255, 255, 1) 30%
     ),
     url("../../assets/images/shop-bg.jpg");
@@ -14,40 +14,45 @@
   align-items: flex-start;
   justify-content: flex-end;
   color: $color-base;
-  h1 {
-    @include desktop-view {
-      color: $color-accent;
-    }
-  }
 
-  .favorites-section-container {
+  .cart-section-container {
     max-width: $maxWidth-content;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    padding: 60px 20px 50px;
+    gap: 20px;
+    padding: 70px 20px 20px;
     color: $color-base;
 
     @include tablet-view {
       padding: 100px 20px 50px;
+      gap: 60px;
     }
     @include desktop-view {
       padding: 120px 20px 50px;
     }
+
+    h1 {
+      @include desktop-view {
+        color: $color-accent;
+      }
+    }
+
+    .button.black {
+      max-width: 220px;
+      align-self: center;
+    }
+    .general-sum {
+      color: $color-accent;
+      text-align: center;
+    }
   }
-  .favorites-container {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(2, 6fr);
-    @include small-mobile-view {
-      grid-template-columns: repeat(1, 12fr);
-    }
-    @include tablet-view {
-      grid-template-columns: repeat(3, 4fr);
-    }
-    @include desktop-view {
-      grid-template-columns: repeat(4, 3fr);
-    }
+
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
   }
 }
