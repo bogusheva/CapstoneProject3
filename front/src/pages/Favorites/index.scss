@@ -1,0 +1,52 @@
+.favorites-section {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url("../../assets/images/shop-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: fit-content;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: $color-base;
+
+  .favorites-section-container {
+    max-width: $maxWidth-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 20px 50px;
+    color: $color-base;
+
+    @include tablet-view {
+      width: 75vw;
+      padding: 100px 20px 50px;
+    }
+    @include desktop-view {
+      width: 65vw;
+      padding: 120px 20px 50px;
+    }
+  }
+  .favorites-container {
+    display: grid;
+    grid-template-columns: repeat(4, 3fr);
+    gap: 35px;
+
+    .product-item {
+      background-color: $color-base-dark;
+
+      .product-title,
+      .product-price {
+        color: $color-accent;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
+  }
+}

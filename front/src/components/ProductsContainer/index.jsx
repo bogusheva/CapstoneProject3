@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+
 import ProductCard from "../../components/ProductCard";
 import { GET_PRODUCTS } from "../../data/databaseApi";
 import { REACT_APP_DATABASE_URL } from "../../functions/index";
@@ -24,14 +24,14 @@ export default function ProductsContainer() {
 
       <div className="products-container">
         {data?.products.data.map(({ id, attributes }) => (
-          <Link key={id} to={`/shop/product${id}`}>
-            <ProductCard
-              url={`${REACT_APP_DATABASE_URL}${attributes.img.data[0].attributes.url}`}
-              id={id}
-              title={attributes.title}
-              price={attributes.price}
-            />
-          </Link>
+          <ProductCard
+            key={id}
+            url={`${REACT_APP_DATABASE_URL}${attributes.img.data[0].attributes.url}`}
+            id={id}
+            title={attributes.title}
+            price={attributes.price}
+            link={`/shop/product${id}`}
+          />
         ))}
       </div>
     </>

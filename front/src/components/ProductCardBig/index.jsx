@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { getAverageRating } from "../../functions/index";
-import ReviewCard from "../ReviewCard";
 import { REACT_APP_DATABASE_URL } from "../../functions/index";
+import ReviewCard from "../ReviewCard";
 
 export default function ProductCardBig() {
   const { id } = useParams();
-  const productId = Number(id.slice(7));
+  const productId = id.slice(7);
   const [photoNumber, setPhotoNumber] = useState(0);
   const [numReviewsToShow, setNumReviewsToShow] = useState(3);
 
@@ -94,6 +94,7 @@ export default function ProductCardBig() {
   function addToCart() {
     const cartItem = {
       id: productId,
+      img: `${REACT_APP_DATABASE_URL}${product.img.data[0].attributes.url}`,
       title: product.title,
       quantity: 1,
       price: product.price,
@@ -105,13 +106,13 @@ export default function ProductCardBig() {
       localStorage.setItem("cart", JSON.stringify([...cartData, cartItem]));
     }
   }
-
   function addToFavorites() {
     if (localStorage.getItem("favorite")) {
       setFavoriteData(JSON.parse(localStorage.getItem("favorite")));
     }
     const favoriteItem = {
       id: productId,
+      img: `${REACT_APP_DATABASE_URL}${product.img.data[0].attributes.url}`,
       title: product.title,
       price: product.price,
     };
