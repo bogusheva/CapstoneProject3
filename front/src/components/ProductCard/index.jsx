@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+import AuthContext from "../../context/AuthContext";
 
 export default function ProductCard(props) {
   const { cartData, setCartData, setFavoriteData, favoriteData } = props;
+
+  const { isLogged, setIsLogged } = useContext(AuthContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -60,16 +64,20 @@ export default function ProductCard(props) {
     <div className="product-item">
       <div className="img-holder">
         <img src={props.url} alt={`product ${props.id}`} />
-        <div className="heart-container" onClick={addToFavorites}>
-          {isFavorite ? (
-            <span className="icon-heart"></span>
-          ) : (
-            <span className="icon-heart-broken"></span>
-          )}
-        </div>
-        <div className="cart-container" onClick={addToCart}>
-          <span className="icon-cart"></span>
-        </div>
+        {isLogged && (
+          <div className="heart-container" onClick={addToFavorites}>
+            {isFavorite ? (
+              <span className="icon-heart"></span>
+            ) : (
+              <span className="icon-heart-broken"></span>
+            )}
+          </div>
+        )}
+        {isLogged && (
+          <div className="cart-container" onClick={addToCart}>
+            <span className="icon-cart"></span>
+          </div>
+        )}
       </div>
       <Link to={props.link}>
         <h3 className="product-title">{props.title}</h3>

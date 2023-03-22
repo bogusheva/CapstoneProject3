@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 export default function LoginForm({ login, password }) {
   const [isCorrect, setIsCorrect] = useState(true);
+  const { isLogged, setIsLogged } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -18,6 +20,7 @@ export default function LoginForm({ login, password }) {
 
   function onSubmit(data) {
     if (data.login === login && data.password === password) {
+      setIsLogged(true);
       navigate("/");
     } else {
       setIsCorrect(false);

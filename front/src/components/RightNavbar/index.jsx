@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 export default function RightNavbar() {
-  const [localStorageData, setLocalStorageData] = useState({});
-  useEffect(() => {
-    const savedData = localStorage.getItem("formData");
-    if (savedData) {
-      setLocalStorageData(JSON.parse(savedData));
-    }
-  }, []);
+  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  function logout() {
+    setIsLogged(false);
+    navigate("/");
+  }
 
   return (
     <div className="right-navbar">
-      {localStorageData.login && (
+      {isLogged && (
         <>
           <Link to={"./favorites"}>
             <span className="icon-heart">
@@ -26,11 +28,17 @@ export default function RightNavbar() {
           </Link>
         </>
       )}
-      <Link to={"./login"}>
-        <span className="icon-user">
-          <span className="not-mobile-view">Login</span>
+      {isLogged ? (
+        <span className="icon-user" onClick={logout}>
+          <span className="not-mobile-view">Log Out</span>
         </span>
-      </Link>
+      ) : (
+        <Link to={"./login"}>
+          <span className="icon-user">
+            <span className="not-mobile-view">Log in</span>
+          </span>
+        </Link>
+      )}
     </div>
   );
 }

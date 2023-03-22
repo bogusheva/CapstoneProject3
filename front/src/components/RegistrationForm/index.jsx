@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 export default function RegistrationForm() {
   const navigate = useNavigate();
@@ -9,8 +11,11 @@ export default function RegistrationForm() {
     formState: { errors },
   } = useForm();
 
+  const { isLogged, setIsLogged } = useContext(AuthContext);
+
   function onSubmit(data) {
     localStorage.setItem("formData", JSON.stringify(data));
+    setIsLogged(true);
     navigate("/");
   }
   return (
@@ -94,7 +99,7 @@ export default function RegistrationForm() {
         cols={35}
         {...register("address", {
           required: true,
-          minLength: 50,
+          minLength: 10,
         })}
       ></textarea>
       {errors.address && (

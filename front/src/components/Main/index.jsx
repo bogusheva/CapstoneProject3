@@ -32,7 +32,6 @@ export default function Main() {
           <Route path=":id" element={<ProductCardBig />}></Route>
           <Route path="*" element={<NotFound />} />
         </Route>
-
         <Route path="/blog" element={<Blog blogContent={blogContent} />}>
           <Route index element={<IntroBlogArticle />} />
           <Route

@@ -7,14 +7,14 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper";
 
-import ProductCard from "../../../components/ProductCard";
+import ProductCardHome from "../../../components/ProductCardHome";
 import Button from "../../../components/Button";
 import "../../../index.scss";
 
 const HomeSliderSection = forwardRef(({ heading, subheading, array }, ref) => {
   const productsBlock = array.map((item) => (
     <SwiperSlide key={item.id}>
-      <ProductCard {...item} />
+      <ProductCardHome {...item} />
     </SwiperSlide>
   ));
   return (

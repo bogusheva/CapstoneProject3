@@ -1,10 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { getAverageRating } from "../../functions/index";
 import { REACT_APP_DATABASE_URL } from "../../functions/index";
+import AuthContext from "../../context/AuthContext";
 import ReviewCard from "../ReviewCard";
 
 export default function ProductCardBig() {
@@ -17,6 +18,8 @@ export default function ProductCardBig() {
   const [favoriteData, setFavoriteData] = useState([]);
 
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const { isLogged, setIsLogged } = useContext(AuthContext);
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {
@@ -158,13 +161,15 @@ export default function ProductCardBig() {
               src={`${REACT_APP_DATABASE_URL}${product.img.data[photoNumber].attributes.url}`}
               alt={`product ${photoNumber + 1}`}
             />
-            <div className="heart-container" onClick={addToFavorites}>
-              {isFavorite ? (
-                <span className="icon-heart"></span>
-              ) : (
-                <span className="icon-heart-broken"></span>
-              )}
-            </div>
+            {isLogged && (
+              <div className="heart-container" onClick={addToFavorites}>
+                {isFavorite ? (
+                  <span className="icon-heart"></span>
+                ) : (
+                  <span className="icon-heart-broken"></span>
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className="item-description-container">
@@ -177,9 +182,11 @@ export default function ProductCardBig() {
             <span>({product.review.data.length})</span>
           </p>
 
-          <span className="button" onClick={addToCart}>
-            add to cart <b>$ {product.price.toFixed(2)}</b>
-          </span>
+          {isLogged && (
+            <span className="button" onClick={addToCart}>
+              add to cart <b>$ {product.price.toFixed(2)}</b>
+            </span>
+          )}
 
           <Link to={`/shop`}>
             <span className="button-left">
