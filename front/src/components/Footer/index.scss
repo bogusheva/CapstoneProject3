@@ -116,7 +116,7 @@
 
       .footer-links-list {
         font-family: $font-family;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: $weight-base;
         line-height: 1.47;
         letter-spacing: 0.02em;
@@ -129,7 +129,7 @@
           align-items: flex-start;
         }
         & li {
-          padding: 5px;
+          padding: 5px 3px;
         }
 
         & a {

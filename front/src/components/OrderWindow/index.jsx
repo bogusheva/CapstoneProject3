@@ -125,8 +125,9 @@ export default function OrderWindow(props) {
           )}
       </form>
       <span className="button-left" onClick={props.onClick}>
-        X
+        <span class="icon-cross"></span>
       </span>
+
       {orderIsSubmit && (
         <div className="confirm-window">
           <img src={Advantage2} alt="delivery" />

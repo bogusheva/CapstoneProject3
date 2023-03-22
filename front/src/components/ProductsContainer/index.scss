@@ -1,12 +1,18 @@
 .filter-container {
-  max-width: $maxWidth-content;
   width: 100%;
   margin: 0 auto;
   display: flex;
   gap: 30px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 20px 10px;
+  @include tablet-view {
+    flex-direction: row;
+  }
+  @include desktop-view {
+    max-width: $maxWidth-content;
+  }
 
   .button {
     text-transform: none;

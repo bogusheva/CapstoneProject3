@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { getAverageRating } from "../../functions/index";
 import { REACT_APP_DATABASE_URL } from "../../functions/index";
@@ -11,6 +10,7 @@ import ReviewCard from "../ReviewCard";
 export default function ProductCardBig() {
   const { id } = useParams();
   const productId = id.slice(7);
+  const navigate = useNavigate();
   const [photoNumber, setPhotoNumber] = useState(0);
   const [numReviewsToShow, setNumReviewsToShow] = useState(3);
 
@@ -40,7 +40,7 @@ export default function ProductCardBig() {
   }, [favoriteData, productId]);
 
   const GET_PRODUCT = gql`
-    query GetProducts {
+    query GetProduct {
       product(id: ${id.slice(7)}) {
         data {
           id
@@ -88,6 +88,10 @@ export default function ProductCardBig() {
   if (error) return <p>Error : {error.message}</p>;
 
   const product = data?.product.data.attributes;
+
+  function handleGoBack() {
+    navigate(-1); // перенаправлення на попередню сторінку
+  }
 
   function toggle(number) {
     setPhotoNumber(number);
@@ -173,44 +177,76 @@ export default function ProductCardBig() {
           </div>
         </div>
         <div className="item-description-container">
-          <h4>Caffeine: {product.caffeine}</h4>
-          <h2>{product.title}</h2>
-          <h4>TASTING NOTES: {product.flavor}</h4>
-          <p>{product.description}</p>
-          <p className="stars-container">
-            <span>{getAverageRating(product.review.data)}</span>
-            <span>({product.review.data.length})</span>
-          </p>
+          <div className="item-main-container">
+            <h4>Caffeine: {product.caffeine}</h4>
+            <h2>{product.title}</h2>
+            <h4>TASTING NOTES: {product.flavor}</h4>
 
-          {isLogged && (
-            <span className="button" onClick={addToCart}>
-              add to cart <b>$ {product.price.toFixed(2)}</b>
-            </span>
-          )}
-
-          <Link to={`/shop`}>
-            <span className="button-left">
+            <p>{product.description}</p>
+            <h5>ingredients: {product.ingredients}</h5>
+            <h5>origin: {product.origin}</h5>
+            <p className="stars-container">
+              <span>{getAverageRating(product.review.data)}</span>
+              <span>({product.review.data.length})</span>
+            </p>
+            {isLogged && (
+              <span className="button" onClick={addToCart}>
+                add to cart <b>$ {product.price.toFixed(2)}</b>
+              </span>
+            )}
+            <span className="button-left" onClick={handleGoBack}>
               <span className="icon-arrow-left"></span>
             </span>
-          </Link>
+          </div>
+          <div className="item-additional-container">
+            <h4>Steeping Instructions</h4>
+            <div className="instructions-container">
+              <div className="instruction-card">
+                <span className="icon-droplet"></span>
+                <p>
+                  <span className="not-mobile-view">
+                    WATER&nbsp;TEMPERATURE{" "}
+                  </span>
+                  {product.temperature}F
+                </p>
+              </div>
+              <div className="instruction-card">
+                <span className="icon-hour-glass"></span>
+                <p>
+                  <span className="not-mobile-view">STEEP&nbsp;TIME </span>
+                  {product.steepTime}
+                </p>
+              </div>
+              <div className="instruction-card">
+                <span className="icon-mug"></span>
+                <p>
+                  <span className="not-mobile-view">SERVING&nbsp;SIZE </span>
+                  {product.servingSize}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="reviews-container">
-        {product.review.data.slice(0, numReviewsToShow).map((review) => (
-          <ReviewCard
-            key={review.id}
-            text={review.attributes.text}
-            rating={review.attributes.rating}
-            name={review.attributes.name}
-          />
-        ))}
-      </div>
-      <div>
-        {numReviewsToShow < product.review.data.length && (
-          <span className="button" onClick={handleShowMoreReviews}>
-            more reviews
-          </span>
-        )}
+        <h3>Latest reviews</h3>
+        <div className="reviews-block">
+          {product.review.data.slice(0, numReviewsToShow).map((review) => (
+            <ReviewCard
+              key={review.id}
+              text={review.attributes.text}
+              rating={review.attributes.rating}
+              name={review.attributes.name}
+            />
+          ))}
+        </div>
+        <div>
+          {numReviewsToShow < product.review.data.length && (
+            <span className="button" onClick={handleShowMoreReviews}>
+              more reviews
+            </span>
+          )}
+        </div>
       </div>
     </section>
   );

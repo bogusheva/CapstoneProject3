@@ -14,32 +14,30 @@
     position: relative;
     display: flex;
     border-bottom: 1px solid $color-accent;
+    input {
+      width: 100%;
+      display: block;
+      width: fit-content;
+      border: none;
+      font-family: $font-family;
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: $weight-base;
+      line-height: 1.47;
+      letter-spacing: 0em;
+      margin-right: 10px;
+      min-width: 210px;
+
+      &:focus {
+        border: none;
+        outline: unset;
+      }
+    }
   }
   p {
     color: $color-danger;
   }
 
-  input {
-    display: block;
-    width: fit-content;
-    border: none;
-    font-family: $font-family;
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: $weight-base;
-    line-height: 1.47;
-    letter-spacing: 0em;
-    margin-right: 10px;
-    min-width: 350px;
-    @include small-mobile-view {
-      min-width: 250px;
-    }
-
-    &:focus {
-      border: none;
-      outline: unset;
-    }
-  }
   button {
     border: none;
     .subscribe-button {

@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 export default function RightNavbar() {
@@ -16,28 +15,28 @@ export default function RightNavbar() {
     <div className="right-navbar">
       {isLogged && (
         <>
-          <Link to={"./favorites"}>
+          <NavLink to={"./favorites"}>
             <span className="icon-heart">
               <span className="not-mobile-view">Favorites</span>
             </span>
-          </Link>
-          <Link to={"./cart"}>
+          </NavLink>
+          <NavLink to={"./cart"}>
             <span className="icon-cart">
               <span className="not-mobile-view">Cart</span>
             </span>
-          </Link>
+          </NavLink>
         </>
       )}
       {isLogged ? (
-        <span className="icon-user" onClick={logout}>
+        <span className="icon-exit" onClick={logout}>
           <span className="not-mobile-view">Log Out</span>
         </span>
       ) : (
-        <Link to={"./login"}>
-          <span className="icon-user">
+        <NavLink to={"./login"}>
+          <span className="icon-enter">
             <span className="not-mobile-view">Log in</span>
           </span>
-        </Link>
+        </NavLink>
       )}
     </div>
   );
