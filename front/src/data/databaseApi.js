@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_FULL_PRODUCTS = gql`
   query GetFullProducts {
-    products {
+    products(sort: "createdAt:desc", pagination: { limit: 480 }) {
       data {
         id
         attributes {
@@ -34,12 +34,16 @@ export const GET_FULL_PRODUCTS = gql`
 
 export const GET_PRODUCTS = gql`
   query GetProducts {
-    products {
+    products(sort: "createdAt:desc", pagination: { limit: 480 }) {
       data {
         id
         attributes {
           title
           price
+          category
+          caffeine
+          origin
+          collection
           img {
             data {
               attributes {
@@ -56,7 +60,7 @@ export const GET_PRODUCTS = gql`
 
 export const GET_REVIEWS = gql`
   query GetReviews {
-    reviews {
+    reviews(sort: "createdAt:desc", pagination: { limit: 240 }) {
       data {
         id
         attributes {

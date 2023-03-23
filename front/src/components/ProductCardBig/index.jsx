@@ -19,7 +19,7 @@ export default function ProductCardBig() {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {
@@ -66,7 +66,7 @@ export default function ProductCardBig() {
                 }
               }
             }
-            review {
+            review (sort: "createdAt:desc", pagination: { limit: 240 }) {
               data {
                 id
                 attributes {

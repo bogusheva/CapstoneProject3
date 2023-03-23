@@ -10,8 +10,10 @@
   line-height: 2;
 
   @include small-mobile-view {
-    right: 2px;
+    right: 10px;
     width: 65px;
+    gap: 10px;
+    justify-content: flex-end;
   }
   @include tablet-view {
     width: 270px;
