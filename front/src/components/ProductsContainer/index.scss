@@ -1,8 +1,9 @@
 .products-block-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 25px;
-  padding: 10px;
+  padding: 10px 0 30px;
 }
 
 .filter-container {

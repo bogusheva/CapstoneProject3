@@ -57,8 +57,10 @@ export default function Cart() {
     .toFixed(2);
   return (
     <section className="cart-section">
-      <div className="cart-section-container">
+      <div className="cart-hero-container">
         <h1>your order</h1>
+      </div>
+      <div className="cart-section-container">
         <div className="cart-container">
           {cartData.map((item) => (
             <ProductItemCart

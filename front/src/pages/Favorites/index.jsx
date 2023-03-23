@@ -19,8 +19,10 @@ export default function Favorites() {
 
   return (
     <section className="favorites-section">
-      <div className="favorites-section-container">
+      <div className="favorites-hero-container">
         <h1>Your Favorites</h1>
+      </div>
+      <div className="favorites-section-container">
         <div className="favorites-container">
           {favoriteData.map((item) => (
             <ProductCard

@@ -260,13 +260,12 @@ export default function ProductsContainer() {
           />
         ))}
       </div>
-      <div>
-        {numProductsToShow < productsData.length && (
-          <span className="button" onClick={handleShowMoreProducts}>
-            more reviews
-          </span>
-        )}
-      </div>
+
+      {numProductsToShow < productsData.length && (
+        <span className="button" onClick={handleShowMoreProducts}>
+          more reviews
+        </span>
+      )}
     </div>
   );
 }

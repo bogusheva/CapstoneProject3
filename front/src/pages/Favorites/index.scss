@@ -1,19 +1,28 @@
 .favorites-section {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 10%,
-      rgba(255, 255, 255, 1) 30%
-    ),
-    url("../../assets/images/shop-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: fit-content;
-  min-height: 50vh;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  color: $color-base;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet-view {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .favorites-hero-container {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1) 30%,
+        rgba(255, 255, 255, 1) 100%
+      ),
+      url("../../assets/images/favorites-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    padding: 110px 0 0;
+  }
   h1 {
     @include desktop-view {
       color: $color-accent;
@@ -26,14 +35,11 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 60px 20px 50px;
+    padding: 20px 20px 30px;
     color: $color-base;
 
-    @include tablet-view {
-      padding: 100px 20px 50px;
-    }
     @include desktop-view {
-      padding: 120px 20px 50px;
+      padding: 40px 20px 50px;
     }
   }
   .favorites-container {
