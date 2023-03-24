@@ -59,7 +59,7 @@ export default function ProductCard(props) {
       setFavoriteData(newFavoriteData);
     }
   }
-
+  console.log(props);
   return (
     <div className="product-item">
       <div className="img-holder">

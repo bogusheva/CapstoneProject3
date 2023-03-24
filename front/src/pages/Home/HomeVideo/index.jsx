@@ -1,11 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import WeatherBlock from "../../../components/WeatherBlock";
 import VideoBg from "../../../assets/video/videoBg.mp4";
-import "../../../index.scss";
 
 export default function HomeVideo() {
   const [isPlay, setIsPlay] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const videoRef = useRef(null);
-  //videoRef.current.playbackRate = 0.7;
 
   const togglePlay = () => {
     if (videoRef.current.paused) {
@@ -17,25 +18,40 @@ export default function HomeVideo() {
     }
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 768);
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className="home-video">
-      <div className="overlay"></div>
-      <video
-        ref={videoRef}
-        autoPlay={isPlay}
-        loop
-        muted
-        className="video-holder"
-      >
-        <source src={VideoBg} type="video/mp4" />
-      </video>
-      <div className="video-button" onClick={togglePlay}>
-        {isPlay ? (
-          <span class="icon-pause2"></span>
-        ) : (
-          <span className="icon-play3"></span>
-        )}
-      </div>
+      {!isPlay && <WeatherBlock />}
+      {!isMobile && !isPlay && <div className="overlay"></div>}
+      {!isMobile && (
+        <video
+          ref={videoRef}
+          autoPlay={isPlay}
+          loop
+          muted
+          className="video-holder"
+        >
+          <source src={VideoBg} type="video/mp4" />
+        </video>
+      )}
+      {isMobile && <div className="video-bg">/</div>}
+      {!isMobile && (
+        <div className="video-button" onClick={togglePlay}>
+          {isPlay ? (
+            <span class="icon-pause2"></span>
+          ) : (
+            <span className="icon-play3"></span>
+          )}
+        </div>
+      )}
     </section>
   );
 }

@@ -263,7 +263,7 @@ export default function ProductsContainer() {
 
       {numProductsToShow < productsData.length && (
         <span className="button" onClick={handleShowMoreProducts}>
-          more reviews
+          more products
         </span>
       )}
     </div>

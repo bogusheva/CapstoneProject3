@@ -57,7 +57,7 @@ export default function OrderWindow(props) {
     <div className="order-window">
       <h2>Last Step</h2>
       <p>Fill in the contact details before confirming the order</p>
-      <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="order-form">
         <label htmlFor="firstName">First Name</label>
         <input
           type="text"
