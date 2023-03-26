@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  publish = "front/build"
-  functions = "back/build"
+  publish = "build"
+  functions = "build"
   env = { STRAPI_URL = "http://localhost:1337" }
 
 [[redirects]]
