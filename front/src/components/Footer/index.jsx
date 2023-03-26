@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import SubscribeForm from "../SubscribeForm";
+
 import { goUp } from "../../functions";
-import "../../index.scss";
 
 export default function Footer() {
   return (
@@ -20,90 +21,112 @@ export default function Footer() {
         <div className="links-block">
           <div className="footer-links">
             <h3>Quick&nbsp;links</h3>
-            <ul>
-              <ul className="footer-links-list">
-                <li>
-                  <Link to="/shop">Shop</Link>
-                </li>
-                <li>
-                  <Link to="/blog">Blog</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
+            <ul className="footer-links-list">
+              <li>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-links">
             <h3>Help&nbsp;Links</h3>
-            <ul>
-              <ul className="footer-links-list">
-                <li>
-                  <Link to="/faqs">Faqs</Link>
-                </li>
-                <li>
-                  <Link to="/privacy-policy">Store Policy</Link>
-                </li>
-                <li>
-                  <Link to="/shipping">Shipping</Link>
-                </li>
-                <li>
-                  <Link to="/payments">Payments</Link>
-                </li>
-              </ul>
+            <ul className="footer-links-list">
+              <li>
+                <NavLink
+                  to={"/faqs"}
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Faqs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/privacy-policy"}
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Store Policy
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/shipping"}
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Shipping
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/payments"}
+                  className={({ isActive, isPending }) =>
+                    isActive ? "active" : isPending ? "pending" : ""
+                  }
+                >
+                  Payments
+                </NavLink>
+              </li>
             </ul>
           </div>
           <div className="footer-links">
-            <h3>Social&nbsp;links</h3>
-            <ul>
-              <ul className="footer-links-list">
-                <li>
-                  <a
-                    href="https://google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Youtube
-                  </a>
-                </li>
-              </ul>
+            <h3>Social&nbsp;Links</h3>
+            <ul className="footer-links-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Youtube
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
       <div className="copyright-block">
         <p>
-          ©2022 Template designed by <b>TemplatesJungle</b>.
+          ©2023 Template designed by <b>TemplatesJungle & Olena Bogusheva</b>.
         </p>
       </div>
       <span className="button-scroll reverse" onClick={goUp}>

@@ -130,14 +130,18 @@
         }
         & li {
           padding: 5px 3px;
-        }
-
-        & a {
-          text-decoration: none;
-          color: $color-accent;
-
-          &:hover {
+          .active {
+            font-weight: $weight-maxbold;
             text-decoration: underline;
+          }
+
+          & a {
+            text-decoration: none;
+            color: $color-accent;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }

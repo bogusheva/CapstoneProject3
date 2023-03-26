@@ -1,6 +1,15 @@
+import { useState } from "react";
+
 import ContactForm from "../../components/ContactForm";
+import ReviewForm from "../../components/ReviewForm";
 
 export default function Contact() {
+  const [selectedTab, setSelectedTab] = useState(2);
+
+  function toggleTab(index) {
+    setSelectedTab(index);
+  }
+
   return (
     <section className="contact-section">
       <h1>Contact us</h1>
@@ -47,10 +56,25 @@ export default function Contact() {
         </div>
         <div className="right-contact">
           <h3>Write us:</h3>
-          <p>
-            Send us a note and we’ll get back to you as quickly as possible.
-          </p>
-          <ContactForm />
+          <div className="forms-section">
+            <div className="tabs-row">
+              <div
+                className={selectedTab === 1 ? "button black" : "button"}
+                onClick={() => toggleTab(1)}
+              >
+                Message
+              </div>
+              <div
+                className={selectedTab === 2 ? "button black" : "button"}
+                onClick={() => toggleTab(2)}
+              >
+                Review
+              </div>
+            </div>
+            <div className="forms-row">
+              {selectedTab === 1 ? <ContactForm /> : <ReviewForm />}
+            </div>
+          </div>
         </div>
       </div>
     </section>

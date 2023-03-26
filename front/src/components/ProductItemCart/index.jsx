@@ -30,7 +30,7 @@ export default function ProductItemCart(props) {
         <div className="cart-all-price">${sumItem.toFixed(2)}</div>
       </div>
       <div className="button" onClick={() => props.removeItem(props.id)}>
-        <span class="icon-bin"></span>
+        <span className="icon-bin"></span>
       </div>
     </div>
   );

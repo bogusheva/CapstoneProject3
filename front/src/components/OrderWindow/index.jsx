@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+
 import Advantage2 from "../../assets/images/advantage2.svg";
+import { getRandomOrderCode } from "../../functions/index";
+//import axios from "axios";
+//import CheckoutWindow from "../CheckoutWindow";  // for page with checkout by stripe TODO
 
 export default function OrderWindow(props) {
   const navigate = useNavigate();
+
   const [localStorageData, setLocalStorageData] = useState({});
   const [orderIsSubmit, setOrderIsSubmit] = useState(false);
+  const [orderID, setOrderID] = useState("");
+
   useEffect(() => {
     const savedData = localStorage.getItem("formData");
     if (savedData) {
       setLocalStorageData(JSON.parse(savedData));
     }
   }, []);
+
   useEffect(() => {
     setValue("firstName", localStorageData.firstName);
     setValue("lastName", localStorageData.lastName);
@@ -20,6 +28,7 @@ export default function OrderWindow(props) {
     setValue("phone", localStorageData.phone);
     setValue("address", localStorageData.address);
   }, [localStorageData]);
+
   const {
     register,
     handleSubmit,
@@ -35,23 +44,52 @@ export default function OrderWindow(props) {
     },
   });
 
+  let orderCode;
+
   function onSubmit(data) {
     setOrderIsSubmit(true);
+    orderCode = getRandomOrderCode();
+    setOrderID(orderCode);
     const orderData = {
+      orderId: orderCode,
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       phone: data.phone,
       address: data.address,
       orderList: props.cartData,
-      summary: props.orderSum,
+      summarySum: props.orderSum,
     };
     localStorage.setItem("orderData", JSON.stringify(orderData));
+
+    // axios
+    //   .post(
+    //     `${process.env.REACT_APP_API_URL}/api/orders`,
+    //     JSON.stringify(orderData),
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     console.log(response);
+    //     localStorage.setItem("orderData", JSON.stringify(orderData));
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
+
   function completeOrder() {
     localStorage.removeItem("cart");
     navigate("/");
   }
+
+  // for page with checkout by stripe TODO
+  // function handleClick() {
+  //   setOrderIsSubmit((prevState) => !prevState);
+  // }
 
   return (
     <div className="order-window">
@@ -125,17 +163,19 @@ export default function OrderWindow(props) {
           )}
       </form>
       <span className="button-left" onClick={props.onClick}>
-        <span class="icon-cross"></span>
+        <span className="icon-cross"></span>
       </span>
 
       {orderIsSubmit && (
         <div className="confirm-window">
           <img src={Advantage2} alt="delivery" />
           <h2>Your order is confirmed</h2>
+          <h4>Order number: {orderID}</h4>
           <p>We're calling you right now!</p>
           <button className="button black" onClick={completeOrder}>
             OK
           </button>
+          {/* <CheckoutWindow onClick={handleClick} />  // for page with checkout by stripe TODO*/}
         </div>
       )}
     </div>

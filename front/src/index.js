@@ -2,29 +2,30 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { REACT_APP_DATABASE_URL } from "./functions";
 import App from "./App";
 import "./index.scss";
+// const stripe = require("stripe")(
+//   "sk_test_51MpW2dEogIvFMQFvyjSb1CkePcBmecZo3PAHzhmvsjjCNvHh68AENJSse170BCb0ZZX3Q44v9cKAR8rYcgeUAutu00vHuBIFPA"
+// );
+// import Stripe from "stripe";
 
-import reportWebVitals from "./reportWebVitals";
+// const stripe = new Stripe(
+//   "sk_test_51MpW2dEogIvFMQFvyjSb1CkePcBmecZo3PAHzhmvsjjCNvHh68AENJSse170BCb0ZZX3Q44v9cKAR8rYcgeUAutu00vHuBIFPA"
+// );
+
+const graphQlUrl = process.env.REACT_APP_API_URL + "/graphql";
 
 const client = new ApolloClient({
-  uri: `${REACT_APP_DATABASE_URL}/graphql`,
+  uri: graphQlUrl,
   cache: new InMemoryCache(),
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </BrowserRouter>
   </ApolloProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

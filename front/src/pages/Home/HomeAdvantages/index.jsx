@@ -1,9 +1,8 @@
 import AdvantageCard from "../../../components/AdvantageCard";
+
 import Advantage1 from "../../../assets/images/advantage1.svg";
 import Advantage2 from "../../../assets/images/advantage2.svg";
 import Advantage3 from "../../../assets/images/advantage3.svg";
-
-import "../../../index.scss";
 
 export default function HomeAdvantages() {
   return (

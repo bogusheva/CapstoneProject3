@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 import ProductCard from "../../components/ProductCard";
 import { GET_PRODUCTS } from "../../data/databaseApi";
-import { REACT_APP_DATABASE_URL } from "../../functions/index";
 
 export default function ProductsContainer() {
   const [cartData, setCartData] = useState([]);
@@ -131,6 +130,7 @@ export default function ProductsContainer() {
     );
     setProductsData(sortedArr);
   }
+
   function handleSortTitleDesc() {
     const sortedArr = [...initialProductData].sort((a, b) =>
       a.attributes.title > b.attributes.title ? -1 : 1
@@ -248,7 +248,10 @@ export default function ProductsContainer() {
         {productsData.slice(0, numProductsToShow).map(({ id, attributes }) => (
           <ProductCard
             key={id}
-            url={`${REACT_APP_DATABASE_URL}${attributes.img.data[0].attributes.url}`}
+            url={
+              process.env.REACT_APP_API_URL +
+              `${attributes.img.data[0].attributes.url}`
+            }
             id={id}
             title={attributes.title}
             price={attributes.price}

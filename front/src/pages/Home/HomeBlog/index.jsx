@@ -1,5 +1,4 @@
 import Button from "../../../components/Button";
-import "../../../index.scss";
 
 export default function HomeBlog() {
   return (

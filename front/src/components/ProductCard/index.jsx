@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 export default function ProductCard(props) {
   const { cartData, setCartData, setFavoriteData, favoriteData } = props;
 
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -59,7 +59,7 @@ export default function ProductCard(props) {
       setFavoriteData(newFavoriteData);
     }
   }
-  console.log(props);
+
   return (
     <div className="product-item">
       <div className="img-holder">

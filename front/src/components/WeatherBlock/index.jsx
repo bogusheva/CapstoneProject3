@@ -1,13 +1,13 @@
 import { useQuery } from "@apollo/client";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { gql } from "@apollo/client";
-import AuthContext from "../../context/AuthContext";
 import axios from "axios";
+
+import { quotesArray } from "../../data/quotes.js";
+
 import WeatherDescription from "../WeatherDescription";
 import ProductCard from "../ProductCard";
 import Mug from "../../assets/images/advantage2.svg";
-import { REACT_APP_DATABASE_URL } from "../../functions/index";
-import { quotesArray } from "../../data/quotes.js";
 
 export default function WeatherBlock() {
   const [city, setCity] = useState("");
@@ -26,8 +26,6 @@ export default function WeatherBlock() {
   const [cartData, setCartData] = useState([]);
   const [favoriteData, setFavoriteData] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const { isLogged } = useContext(AuthContext);
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {
@@ -103,7 +101,7 @@ export default function WeatherBlock() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const apiKey = "f97f8eaebc5efe3fd907c0565c3a9148";
+    const apiKey = process.env.REACT_APP_API_KEY;
     let units = "metric";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
     axios.get(url).then(showData);
@@ -123,27 +121,27 @@ export default function WeatherBlock() {
     switch (response.data.weather[0].description) {
       case "rainy":
         setQuote(quotesArray[0]);
-        setProductId(Math.round(Math.random() * 10));
+        setProductId(Math.round(Math.random() * 8));
         break;
       case "few clouds":
         setQuote(quotesArray[1]);
-        setProductId(Math.round(Math.random() * 10 + 10));
+        setProductId(Math.round(Math.random() * 8 + 8));
         break;
       case "scattered clouds":
         setQuote(quotesArray[2]);
-        setProductId(Math.round(Math.random() * 10 + 20));
+        setProductId(Math.round(Math.random() * 8 + 16));
         break;
       case "overcast clouds":
         setQuote(quotesArray[3]);
-        setProductId(Math.round(Math.random() * 10 + 0));
+        setProductId(Math.round(Math.random() * 8 + 24));
         break;
       case "clear sky":
         setQuote(quotesArray[4]);
-        setProductId(Math.round(Math.random() * 10 + 10));
+        setProductId(Math.round(Math.random() * 8 + 32));
         break;
       default:
         setQuote(quotesArray[5]);
-        setProductId(Math.round(Math.random() * 30));
+        setProductId(Math.round(Math.random() * 40));
         break;
     }
   }
@@ -184,7 +182,10 @@ export default function WeatherBlock() {
           {isLoaded ? (
             <ProductCard
               key={product.id}
-              url={`${REACT_APP_DATABASE_URL}${product.attributes.img.data[0].attributes.url}`}
+              url={
+                process.env.REACT_APP_API_URL +
+                `${product.attributes.img.data[0].attributes.url}`
+              }
               id={product.id}
               title={product.attributes.title}
               price={product.attributes.price}

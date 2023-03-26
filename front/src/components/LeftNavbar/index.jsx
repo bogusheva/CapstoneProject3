@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "../../index.scss";
 
 export default function LeftNavbar() {
   const [isClicked, setIsClicked] = useState(false);
@@ -17,7 +16,6 @@ export default function LeftNavbar() {
         </div>
         <ul className="left-navbar">
           <li>
-            {/* <Link to="/shop">Shop</Link> */}
             <NavLink
               to={"/shop"}
               className={({ isActive, isPending }) =>
@@ -28,7 +26,6 @@ export default function LeftNavbar() {
             </NavLink>
           </li>
           <li>
-            {/* <Link to="/blog">Blog</Link> */}
             <NavLink
               to={"/blog"}
               className={({ isActive, isPending }) =>
@@ -39,7 +36,6 @@ export default function LeftNavbar() {
             </NavLink>
           </li>
           <li>
-            {/* <Link to="/about">About</Link> */}
             <NavLink
               to={"/about"}
               className={({ isActive, isPending }) =>
@@ -50,7 +46,6 @@ export default function LeftNavbar() {
             </NavLink>
           </li>
           <li>
-            {/* <Link to="/contact">Contact</Link> */}
             <NavLink
               to={"/contact"}
               className={({ isActive, isPending }) =>

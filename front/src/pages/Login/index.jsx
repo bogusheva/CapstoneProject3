@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+
 import LoginForm from "../../components/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm";
 
 export default function Login() {
   const [selectedTab, setSelectedTab] = useState(2);
   const [localStorageData, setLocalStorageData] = useState({});
+
   useEffect(() => {
     const savedData = localStorage.getItem("formData");
     if (savedData) {
@@ -24,6 +26,10 @@ export default function Login() {
           <span className="icon-user"></span>
           Login / Register
         </h1>
+        <p>
+          Without log in / register you can't add products to cart or add to
+          favorites
+        </p>
         <div className="forms-section">
           <div className="tabs-row">
             <div

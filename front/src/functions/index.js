@@ -27,4 +27,12 @@ export function getAverageRating(data) {
   return showRating(rating);
 }
 
-export const REACT_APP_DATABASE_URL = "http://localhost:1337";
+export function getRandomOrderCode() {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < 10; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}

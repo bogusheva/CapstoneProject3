@@ -52,9 +52,11 @@ export default function Cart() {
     );
     localStorage.setItem("cart", JSON.stringify(newCartData));
   }
+
   const orderSum = cartData
     .reduce((sum, item) => sum + item.price * item.quantity, 0)
     .toFixed(2);
+
   return (
     <section className="cart-section">
       <div className="cart-hero-container">

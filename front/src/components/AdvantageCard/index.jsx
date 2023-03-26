@@ -1,5 +1,3 @@
-import "../../index.scss";
-
 export default function AdvantageCard(props) {
   return (
     <div className="advantage-item">

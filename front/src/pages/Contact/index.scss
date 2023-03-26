@@ -37,16 +37,14 @@
     flex-direction: column;
     gap: 20px;
     margin: 0 auto;
+    @include tablet-view {
+      padding: 0 30px;
+    }
     @include desktop-view {
       max-width: $maxWidth-content;
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
-    }
-
-    .right-contact > p {
-      padding-bottom: 18px;
-      max-width: 500px;
     }
 
     iframe {
@@ -78,6 +76,13 @@
           margin-right: 50px;
         }
       }
+    }
+  }
+  .forms-section {
+    max-width: 100%;
+    margin: 0 auto;
+    @include tablet-view {
+      margin: 0;
     }
   }
 }

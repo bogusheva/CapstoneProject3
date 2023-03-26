@@ -1,6 +1,6 @@
 import { faqs } from "../../data/faqs";
+
 import QABlock from "../../components/QABlock";
-import "../../index.scss";
 
 export default function Faqs() {
   const faqsBlock = faqs.map((item) => <QABlock key={item.id} {...item} />);

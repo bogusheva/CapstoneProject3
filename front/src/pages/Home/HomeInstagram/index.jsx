@@ -1,6 +1,6 @@
 import { instaphotos } from "../../../data/instaphoto.js";
+
 import InstaBlock from "../../../components/InstaBlock/index.jsx";
-import "../../../index.scss";
 
 export default function HomeInstagram() {
   const photos = instaphotos.map((item) => (

@@ -1,5 +1,3 @@
-import "../../index.scss";
-
 export default function QABlock({ id, title, text }) {
   return (
     <>

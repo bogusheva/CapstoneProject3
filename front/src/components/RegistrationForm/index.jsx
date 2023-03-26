@@ -1,23 +1,26 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+
 import AuthContext from "../../context/AuthContext";
 
 export default function RegistrationForm() {
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { setIsLogged } = useContext(AuthContext);
 
   function onSubmit(data) {
     localStorage.setItem("formData", JSON.stringify(data));
     setIsLogged(true);
     navigate("/");
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
       <label htmlFor="login">Login</label>

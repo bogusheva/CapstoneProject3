@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 export default function LoginForm({ login, password }) {
   const [isCorrect, setIsCorrect] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+  const { setIsLogged } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -32,7 +32,7 @@ export default function LoginForm({ login, password }) {
     }
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+    <form onSubmit={handleSubmit(onSubmit)} className="login-form">
       <div>
         <label htmlFor="login">Login</label>
         <input
@@ -54,16 +54,16 @@ export default function LoginForm({ login, password }) {
           {...register("password", {
             required: true,
             pattern:
-              /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~\-={}\[\]|\\:;"'<>,.?/])(?=.*[^\s]).{8,}$/,
+              /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~\-={}[\]|\\:;"'<>,.?/])(?=.*[^\s]).{8,}$/,
             minLength: 10,
             maxLength: 20,
           })}
         />
         <span onClick={toggleVisible}>
           {isVisible ? (
-            <span class="icon-eye-blocked"></span>
+            <span className="icon-eye-blocked"></span>
           ) : (
-            <span class="icon-eye"></span>
+            <span className="icon-eye"></span>
           )}
         </span>
         {errors.password && (

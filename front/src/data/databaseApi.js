@@ -1,37 +1,5 @@
 import { gql } from "@apollo/client";
 
-export const GET_FULL_PRODUCTS = gql`
-  query GetFullProducts {
-    products(sort: "createdAt:desc", pagination: { limit: 480 }) {
-      data {
-        id
-        attributes {
-          title
-          description
-          img {
-            data {
-              attributes {
-                url
-                alternativeText
-              }
-            }
-          }
-          category
-          caffeine
-          origin
-          collection
-          price
-          temperature
-          steepTime
-          servingSize
-          ingredients
-          flavor
-        }
-      }
-    }
-  }
-`;
-
 export const GET_PRODUCTS = gql`
   query GetProducts {
     products(sort: "createdAt:desc", pagination: { limit: 480 }) {
@@ -69,6 +37,38 @@ export const GET_REVIEWS = gql`
           text
           rating
           productID
+        }
+      }
+    }
+  }
+`;
+
+export const GET_FULL_PRODUCTS = gql`
+  query GetFullProducts {
+    products(sort: "createdAt:desc", pagination: { limit: 480 }) {
+      data {
+        id
+        attributes {
+          title
+          description
+          img {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
+          category
+          caffeine
+          origin
+          collection
+          price
+          temperature
+          steepTime
+          servingSize
+          ingredients
+          flavor
         }
       }
     }

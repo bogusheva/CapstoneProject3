@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ContactForm() {
+  const navigate = useNavigate();
+
   const [localStorageData, setLocalStorageData] = useState({});
   useEffect(() => {
     const savedData = localStorage.getItem("formData");
@@ -15,6 +18,7 @@ export default function ContactForm() {
     setValue("email", localStorageData.email);
     setValue("phone", localStorageData.phone);
   }, [localStorageData]);
+
   const {
     register,
     handleSubmit,
@@ -29,9 +33,12 @@ export default function ContactForm() {
       message: "",
     },
   });
+
   function onSubmit(data) {
-    console.log(data);
+    localStorage.setItem("messageData", JSON.stringify(data));
+    navigate("/");
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
       <label htmlFor="firstName">First Name</label>
@@ -80,7 +87,7 @@ export default function ContactForm() {
       <label htmlFor="message">What’s on your mind?</label>
       <textarea
         id="message"
-        rows={8}
+        rows={9}
         cols={35}
         {...register("message", {
           required: true,

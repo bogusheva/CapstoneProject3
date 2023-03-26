@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+
 import AuthContext from "../../context/AuthContext";
 
 export default function RightNavbar() {
   const { isLogged, setIsLogged } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   function logout() {

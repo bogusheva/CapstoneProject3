@@ -70,11 +70,18 @@
   text-align: center;
   gap: 35px;
   border: 1px solid $color-accent-light;
-  padding: 30px 5px 0;
+  padding: 30px 10px;
   background-color: $color-base;
   color: $color-accent;
   font-size: 1.2rem;
   img {
     width: 60px;
+  }
+  p {
+    font-size: 0.9rem;
+    width: 60%;
+  }
+  span {
+    cursor: pointer;
   }
 }

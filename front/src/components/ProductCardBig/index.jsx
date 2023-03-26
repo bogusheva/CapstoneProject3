@@ -2,8 +2,9 @@ import { useQuery } from "@apollo/client";
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { gql } from "@apollo/client";
+
 import { getAverageRating } from "../../functions/index";
-import { REACT_APP_DATABASE_URL } from "../../functions/index";
+
 import AuthContext from "../../context/AuthContext";
 import ReviewCard from "../ReviewCard";
 
@@ -90,7 +91,7 @@ export default function ProductCardBig() {
   const product = data?.product.data.attributes;
 
   function handleGoBack() {
-    navigate(-1); // перенаправлення на попередню сторінку
+    navigate(-1); // повернення на попередню сторінку
   }
 
   function toggle(number) {
@@ -102,9 +103,11 @@ export default function ProductCardBig() {
   }
 
   function addToCart() {
+    const imgUrl =
+      process.env.REACT_APP_API_URL + `${product.img.data[0].attributes.url}`;
     const cartItem = {
       id: productId,
-      img: `${REACT_APP_DATABASE_URL}${product.img.data[0].attributes.url}`,
+      img: imgUrl,
       title: product.title,
       quantity: 1,
       price: product.price,
@@ -121,9 +124,11 @@ export default function ProductCardBig() {
     if (localStorage.getItem("favorite")) {
       setFavoriteData(JSON.parse(localStorage.getItem("favorite")));
     }
+    const imgUrl =
+      process.env.REACT_APP_API_URL + `${product.img.data[0].attributes.url}`;
     const favoriteItem = {
       id: productId,
-      img: `${REACT_APP_DATABASE_URL}${product.img.data[0].attributes.url}`,
+      img: imgUrl,
       title: product.title,
       price: product.price,
     };
@@ -153,7 +158,9 @@ export default function ProductCardBig() {
             {product.img.data.map((image, index) => (
               <li key={index} onClick={() => toggle(index)}>
                 <img
-                  src={`${REACT_APP_DATABASE_URL}${image.attributes.url}`}
+                  src={
+                    process.env.REACT_APP_API_URL + `${image.attributes.url}`
+                  }
                   key={image.id}
                   alt={image.id}
                 />
@@ -162,7 +169,10 @@ export default function ProductCardBig() {
           </ul>
           <div className="main-photo-container">
             <img
-              src={`${REACT_APP_DATABASE_URL}${product.img.data[photoNumber].attributes.url}`}
+              src={
+                process.env.REACT_APP_API_URL +
+                `${product.img.data[photoNumber].attributes.url}`
+              }
               alt={`product ${photoNumber + 1}`}
             />
             {isLogged && (
@@ -181,7 +191,6 @@ export default function ProductCardBig() {
             <h4>Caffeine: {product.caffeine}</h4>
             <h2>{product.title}</h2>
             <h4>TASTING NOTES: {product.flavor}</h4>
-
             <p>{product.description}</p>
             <h5>ingredients: {product.ingredients}</h5>
             <h5>origin: {product.origin}</h5>

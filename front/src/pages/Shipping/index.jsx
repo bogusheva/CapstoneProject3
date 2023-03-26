@@ -1,11 +1,11 @@
 import { shipping } from "../../data/shipping";
 import QABlock from "../../components/QABlock";
-import "../../index.scss";
 
 export default function Payment() {
   const shippingBlock = shipping.map((item) => (
     <QABlock key={item.id} {...item} />
   ));
+
   return (
     <section className="help-section">
       <div className="help-section-container">
