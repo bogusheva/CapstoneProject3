@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import ContactForm from "../../components/ContactForm";
 import ReviewForm from "../../components/ReviewForm";
 
+import AuthContext from "../../context/AuthContext";
+
 export default function Contact() {
-  const [selectedTab, setSelectedTab] = useState(2);
+  const { isLogged } = useContext(AuthContext);
+  const [selectedTab, setSelectedTab] = useState(1);
 
   function toggleTab(index) {
     setSelectedTab(index);
@@ -64,15 +67,19 @@ export default function Contact() {
               >
                 Message
               </div>
-              <div
-                className={selectedTab === 2 ? "button black" : "button"}
-                onClick={() => toggleTab(2)}
-              >
-                Review
-              </div>
+
+              {isLogged && (
+                <div
+                  className={selectedTab === 2 ? "button black" : "button"}
+                  onClick={() => toggleTab(2)}
+                >
+                  Review
+                </div>
+              )}
             </div>
             <div className="forms-row">
-              {selectedTab === 1 ? <ContactForm /> : <ReviewForm />}
+              {selectedTab === 1 && <ContactForm />}
+              {isLogged && selectedTab === 2 && <ReviewForm />}
             </div>
           </div>
         </div>
