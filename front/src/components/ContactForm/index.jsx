@@ -6,19 +6,6 @@ export default function ContactForm() {
   const navigate = useNavigate();
 
   const [localStorageData, setLocalStorageData] = useState({});
-  useEffect(() => {
-    const savedData = localStorage.getItem("formData");
-    if (savedData) {
-      setLocalStorageData(JSON.parse(savedData));
-    }
-  }, []);
-  useEffect(() => {
-    setValue("firstName", localStorageData.firstName);
-    setValue("lastName", localStorageData.lastName);
-    setValue("email", localStorageData.email);
-    setValue("phone", localStorageData.phone);
-  }, [localStorageData]);
-
   const {
     register,
     handleSubmit,
@@ -33,6 +20,19 @@ export default function ContactForm() {
       message: "",
     },
   });
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("formData");
+    if (savedData) {
+      setLocalStorageData(JSON.parse(savedData));
+    }
+  }, []);
+  useEffect(() => {
+    setValue("firstName", localStorageData.firstName);
+    setValue("lastName", localStorageData.lastName);
+    setValue("email", localStorageData.email);
+    setValue("phone", localStorageData.phone);
+  }, [localStorageData, setValue]);
 
   function onSubmit(data) {
     localStorage.setItem("messageData", JSON.stringify(data));

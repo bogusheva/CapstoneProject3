@@ -14,21 +14,6 @@ export default function OrderWindow(props) {
   const [orderIsSubmit, setOrderIsSubmit] = useState(false);
   const [orderID, setOrderID] = useState("");
 
-  useEffect(() => {
-    const savedData = localStorage.getItem("formData");
-    if (savedData) {
-      setLocalStorageData(JSON.parse(savedData));
-    }
-  }, []);
-
-  useEffect(() => {
-    setValue("firstName", localStorageData.firstName);
-    setValue("lastName", localStorageData.lastName);
-    setValue("email", localStorageData.email);
-    setValue("phone", localStorageData.phone);
-    setValue("address", localStorageData.address);
-  }, [localStorageData]);
-
   const {
     register,
     handleSubmit,
@@ -43,6 +28,21 @@ export default function OrderWindow(props) {
       message: "",
     },
   });
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("formData");
+    if (savedData) {
+      setLocalStorageData(JSON.parse(savedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    setValue("firstName", localStorageData.firstName);
+    setValue("lastName", localStorageData.lastName);
+    setValue("email", localStorageData.email);
+    setValue("phone", localStorageData.phone);
+    setValue("address", localStorageData.address);
+  }, [localStorageData, setValue]);
 
   let orderCode;
 
