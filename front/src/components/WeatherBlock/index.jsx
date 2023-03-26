@@ -25,7 +25,7 @@ export default function WeatherBlock() {
 
   const [cartData, setCartData] = useState([]);
   const [favoriteData, setFavoriteData] = useState([]);
-  const [setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {

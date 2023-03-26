@@ -6,19 +6,6 @@ export default function ReviewForm() {
   const navigate = useNavigate();
 
   const [localStorageData, setLocalStorageData] = useState({});
-
-  useEffect(() => {
-    const savedData = localStorage.getItem("formData");
-    if (savedData) {
-      setLocalStorageData(JSON.parse(savedData));
-    }
-  }, []);
-
-  useEffect(() => {
-    setValue("firstName", localStorageData.firstName);
-    setValue("lastName", localStorageData.lastName);
-  }, [localStorageData, setValue]);
-
   const {
     register,
     handleSubmit,
@@ -33,6 +20,18 @@ export default function ReviewForm() {
       description: "",
     },
   });
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("formData");
+    if (savedData) {
+      setLocalStorageData(JSON.parse(savedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    setValue("firstName", localStorageData.firstName);
+    setValue("lastName", localStorageData.lastName);
+  }, [localStorageData, setValue]);
 
   function onSubmit(data) {
     localStorage.setItem("reviewData", JSON.stringify(data));
