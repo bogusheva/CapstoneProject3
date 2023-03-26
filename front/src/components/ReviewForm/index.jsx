@@ -17,7 +17,7 @@ export default function ReviewForm() {
   useEffect(() => {
     setValue("firstName", localStorageData.firstName);
     setValue("lastName", localStorageData.lastName);
-  }, [localStorageData]);
+  }, [localStorageData, setValue]);
 
   const {
     register,
