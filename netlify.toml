@@ -5,6 +5,7 @@ functions = "back/build"
 env = { 
   STRAPI_URL = "http://localhost:1337"
 }
+
 [[redirects]]
 from = "/*"
 to = "/index.html"
