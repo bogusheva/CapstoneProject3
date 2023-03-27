@@ -80,15 +80,18 @@ export default function Cart() {
           ))}
         </div>
         <div className="general-sum">
-          General sum:
-          <b>${orderSum}</b>
+          {cartData.length > 0
+            ? `General sum: $${orderSum}`
+            : "Please, fill in your cart and come back soon!"}
         </div>
-        <button
-          className="button black"
-          onClick={() => setWindowIsVisible(true)}
-        >
-          Order
-        </button>
+        {cartData.length > 0 && (
+          <button
+            className="button black"
+            onClick={() => setWindowIsVisible(true)}
+          >
+            Order
+          </button>
+        )}
         {windowIsVisible && (
           <OrderWindow
             cartData={cartData}

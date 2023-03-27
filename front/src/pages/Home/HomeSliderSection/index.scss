@@ -22,10 +22,11 @@
   .swiper-button-prev {
     color: $color-neutral !important;
   }
-
-  img {
-    width: 100%;
-    max-width: 100%;
+  .image-holder {
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
 

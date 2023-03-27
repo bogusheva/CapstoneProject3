@@ -42,11 +42,11 @@ export default function HomeVideo() {
           <source src={VideoBg} type="video/mp4" />
         </video>
       )}
-      {isMobile && <div className="video-bg">/</div>}
+      {isMobile && <div className="video-bg"></div>}
       {!isMobile && (
         <div className="video-button" onClick={togglePlay}>
           {isPlay ? (
-            <span class="icon-pause2"></span>
+            <span className="icon-pause2"></span>
           ) : (
             <span className="icon-play3"></span>
           )}

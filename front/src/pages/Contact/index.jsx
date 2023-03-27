@@ -36,7 +36,7 @@ export default function Contact() {
             </li>
             <li>
               <span className="icon-envelop"></span>
-              <a href="contact@theteathavenue.coma">
+              <a href="mailto:contact@theteathavenue.com">
                 contact@theteathavenue.com
               </a>
             </li>
