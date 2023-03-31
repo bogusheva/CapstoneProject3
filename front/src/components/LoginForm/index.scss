@@ -37,6 +37,9 @@
       right: 0;
       transform: translate(-50%, -50%);
     }
+    textarea {
+      resize: none;
+    }
   }
   .button {
     margin: 0;
