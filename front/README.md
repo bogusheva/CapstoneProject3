@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+I created a website for a small tea shop, which has such pages as the main page with different sections, a shop with products, a blog with articles, and contact pages.
+I decided to make this project on React using Create React App. I didn't find any suitable APIs about tea and tea products that could be used to simulate working with a server, so I decided to add the necessary information in two different ways to practice. I take articles for the blog and data for the auxiliary pages from a static file in the front-end part of the project and get all the information about the products through requests to the back-end part, which is created using Strapi4. To create a combined query (product + picture + reviews), I used Apollo GraphQL.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I needed a way to store data about the user, the items in the basket, and favourite products. I analysed the websites of similar stores, and I saw that they implement this with localStorage. Therefore, the data about the registered user and selected products are stored in localStorage and loaded in the necessary components. I also needed the "isLogged" variable throughout the site, which takes 2 values false/true. False - when the user is not authorized on the site. In this mode, the users see all the content, and can send a message, but the "basket" and "favourites" labels are hidden. First, they have to sign in through the registration form, and all subsequent times they can simply log in through the login form. Once the user is authorized, they get additional functionality: they can add products to the cart or favourites, place an order, and write a review of the received product. I implemented the variable with the React hook "useContext()". Also I used several react hooks, including the standard useState() to change the data value and store it, and useEffect() mainly to load the necessary data from localStorage into the component. I also installed react-hook-form to use useForm in components related to contact information. For example, clicking on this link takes us to a page where the user has to log in. If localStorage is empty, the registration form is automatically displayed. It contains a validation process, so the user has to fill in everything carefully, and there are hints if the data is incorrect. If the form is not valid, the "Submit" button is hidden. As soon as everything is correct, it becomes available and the user can register. At the same time, the "Log in" icon changes to Log out, which suggests that you can log out of the registered user mode. After that, the user can click on "Log in" again. Now his data is stored in localStorage, so the login form is automatically loaded, where only the login/password is required. For people like me, who constantly forget their passwords, the form also automatically retrieves this data, and all you have to do is click on "Submit". Please note that you can view the password by clicking on this icon, this is also implemented through useState() with a change of input type from "password" to "text". User data is also used in other forms. The form on the contact page has automatic filling when the user wants to leave a message or feedback when placing an order. If the user is not logged in, they won't even see the form for sending a review, it will appear only after logging in.
 
-## Available Scripts
+To implement the routing, I used React router 6, wrapping everything in the <BrowserRouter> component, also use useParams() and useNavigate() hooks and the Routes, Route, Outlet, Link, NavLink components. useNavigate(), for example, was used for this button to return to the previous page with the navigate(-1) command. I decided to practice with nested routes, so for the Blog section I created an array with objects, where there are also nested arrays of objects. Thus, I made dynamic routes like /blog/:blogTheme/ and the next level /blog/:blogTheme/:articleId, and also specified what should be displayed on each page using the Outlet component. All the necessary routes are registered in the Main component, including the index page through the index element, and also added the Not found page. The implementation looks like this. First, we go to the main page of the blog, where the intro article is located. Then we go through the category route to any section of the blog using NavLink (the active link changes the styling to black and text-decoration: underline), the articles of the selected category are displayed when you click on the article card, and the full page of the article is displayed, nested in the main blog page, and there is also a back button to return to the category page. NavLink was used selectively. For example, in the footer, among all these links, only Help Links are implemented through NavLink. This is not the case for Quick Links, because when you click on them, the result of NavLink is visible at the top, in the navigation bar.
 
-In the project directory, you can run:
+Now you can take a closer look at the site's pages. Let's start with the Contact page. On the left side, there are contact details in the form of a list and links. Clicking on the address opens a large Google Maps page, the phone number is written with the "tel:" href="tel:" and the email with the "mailto:" href="mailto:". For the convenience of the user, there is also a built-in google map, which is implemented simply through the standard iframe code of Google maps. On the right is the form for sending a message/review, currently the data is simply sent to localStorage.
+"About" is just a descriptive page, the content of which, by the way, was created by chatGPT in 30 seconds. I think it turned out pretty well. There is also a Subscribe form in the footer, but without a valid address, you won't be able to click on the plane and send an email. You will see a warning in red letters. If it's okay, the icon will appear.
+The store page is made in a very minimalistic style. Only the most necessary things: the main categories for sorting and product cards with an image, name, and price. The cart and favourite icons are for authorised users only. The page initially displays only 12 products, after clicking the "More products" button, 12 more products are displayed.
+First, all the products are downloaded from Strapi using useQuery(GET_PRODUCTS), put into the productsData variable, and then dynamically generated by selecting all categories using .map method, based on the available data. For sorting, array methods such as .sort, .filter are used. When you click on the heart, the product is added to the localStorage of the favourite object, and then these products are displayed on the Favorites page. A single click removes the product from the list of favourites.
+When you click on the cart icon, the product is sent to the cart object in localStorage, and now it can be seen on the Cart page. You can increase/decrease the quantity of the product, which will change the total amount of the order, or you can remove the product from the cart. After clicking on the Order button, a contact details verification window opens, where the data specified during registration is automatically pulled up for the user's convenience and can be changed if necessary. After confirmation, the user receives an order confirmation and a randomly generated order number. After that, the basket is automatically cleared. If there are no products in the basket, you will not be able to click on Order.
 
-### `npm start`
+You can also use the product in the cart to go to its separate page, which is loaded using useQuery(GET_PRODUCT), a single query for a specific id. From there, you can also add the product to your cart/favourites, or read more information or reviews about the product below. You can also reveal more reviews here, currently, only 3 are shown. The back button returns us to the previous page. For products with multiple images, I have implemented a mechanism for switching the main photo when clicking on small photos (toggle function and state change). The average rating according to the reviews is also displayed here and a block with stars is formed.
+To go to the main page, you need to click on the logo in the header. At first, we see the hero section, from where you can immediately go to the store by clicking the "Shop Now" button. Otherwise, by clicking on the down arrow, we move to the next section using the forwardRef function. There are two such functions on the page, trends and bestsellers, which are identical in structure, so I used one component for them and passed different props. To create the slider, I installed Swiper slider with settings: show 4 slides at a time, auto-scroll, infinite loop, and breakpoints.
+Next, there is a section with images (3 identical component cards with different props), which the user can click on to return to the store. Next is a slider section with the best reviews. Almost at the end of the page, there is a section that allows you to go to the blog page, as well as a section with links to the store's posts on Instagram.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+And finally, the icing on the cake is the surprise section, where 2 functionalities are implemented. The first is the display of video with custom play/pause buttons. When you press the button, the video starts and the top level with cards and the overlay with a blackout disappears, and when you stop it, everything returns to its place. By the way, the video is not rendered for mobile devices. I did it by controlling the state of the "isMobile" variable and the window.innerWidth screen size. Two small animations are used in the top-level cards, clockwise scrolling on the left and decreasing/increasing opacity on the right.
+The cards work with the Weather API from openweathermap.org. The store offers the user to enter their city, see the current weather and get a recommendation for the tea that is the best fit for this weather. You can write the city, click "Search", and get a weather quote on the right according to the weather conditions, and a product card on the left. This is implemented using an array of quotes, a random selection of Id within a given interval, and a single useQuery(GET_PRODUCT) query.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I hope you like my site and wish you all a cosy day with a cup of fragrant tea.
