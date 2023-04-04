@@ -1,0 +1,34 @@
+.home-instagram {
+  width: 100%;
+  max-width: $maxWidth-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 0 5px 70px;
+  @include tablet-view {
+    padding: 0 20px 105px;
+  }
+  @include desktop-view {
+    padding: 0 20px 140px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .instaphoto-container {
+    display: grid;
+    grid-template-columns: repeat(2, 6fr);
+    gap: 20px;
+    @include tablet-view {
+      grid-template-columns: repeat(3, 4fr);
+    }
+    @include desktop-view {
+      grid-template-columns: repeat(6, 2fr);
+    }
+  }
+}

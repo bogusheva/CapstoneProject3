@@ -1,0 +1,59 @@
+.favorites-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet-view {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .favorites-hero-container {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1) 30%,
+        rgba(255, 255, 255, 1) 100%
+      ),
+      url("../../assets/images/favorites-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+    padding: 110px 0 0;
+  }
+  h1 {
+    @include desktop-view {
+      color: $color-accent;
+    }
+  }
+
+  .favorites-section-container {
+    max-width: $maxWidth-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 20px 30px;
+    color: $color-base;
+
+    @include desktop-view {
+      padding: 40px 20px 50px;
+    }
+  }
+  .favorites-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(2, 6fr);
+    @include small-mobile-view {
+      grid-template-columns: repeat(1, 12fr);
+    }
+    @include tablet-view {
+      grid-template-columns: repeat(3, 4fr);
+    }
+    @include desktop-view {
+      grid-template-columns: repeat(4, 3fr);
+    }
+  }
+}

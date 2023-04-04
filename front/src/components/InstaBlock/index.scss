@@ -1,0 +1,34 @@
+.insta-block-item {
+  width: 100%;
+  position: relative;
+
+  &:hover .insta-block-hover {
+    visibility: visible;
+    cursor: pointer;
+  }
+
+  .insta-block-hover {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+
+    .icon-holder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $color-base-dark;
+    }
+  }
+
+  .instagram-icon {
+    width: 17px;
+    height: 17px;
+  }
+}

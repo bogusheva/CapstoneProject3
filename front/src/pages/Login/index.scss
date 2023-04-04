@@ -1,0 +1,78 @@
+.login-section {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 70%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url("../../assets/images/login-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: fit-content;
+  color: $color-base;
+  padding: 65px 0 20px;
+  @include tablet-view {
+    padding: 100px 0 60px;
+  }
+  @include desktop-view {
+    min-height: 100vh;
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    @include small-mobile-view {
+      padding: 20px 5px;
+    }
+    @include tablet-view {
+      width: 100%;
+      margin: 0 auto;
+      gap: 30px;
+      padding: 20px;
+    }
+    @include desktop-view {
+      width: 50vw;
+      margin: 0;
+    }
+
+    p {
+      text-align: center;
+      @include desktop-view {
+        max-width: 40%;
+      }
+    }
+  }
+}
+.forms-section {
+  width: max-content;
+  @include small-mobile-view {
+    width: 100%;
+  }
+  .tabs-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .button {
+      @include small-mobile-view {
+        padding: 10px 40px;
+      }
+    }
+
+    .button:hover {
+      transform: none;
+    }
+  }
+
+  .forms-row {
+    width: 100%;
+    background-color: $color-base-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "black",
+        "green",
+        "white",
+        "rooibos",
+        "matcha",
+        "oolong",
+        "pu-erh",
+        "dessert",
+        "herbs"
+      ],
+      "default": "all",
+      "required": true
+    },
+    "caffeine": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "free",
+        "low",
+        "medium",
+        "high"
+      ],
+      "required": true,
+      "default": "all"
+    },
+    "origin": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "China",
+        "India",
+        "Japan",
+        "Taiwan",
+        "Egypt",
+        "Blend"
+      ],
+      "required": true,
+      "default": "all"
+    },
+    "collection": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "outlander",
+        "classic",
+        "wellness",
+        "dessert",
+        "location",
+        "single",
+        "iced",
+        "matcha",
+        "chai"
+      ],
+      "required": true,
+      "default": "all"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "temperature": {
+      "type": "integer",
+      "required": true,
+      "default": 206
+    },
+    "steepTime": {
+      "type": "string",
+      "required": true,
+      "default": "3-5 minutes"
+    },
+    "servingSize": {
+      "type": "string",
+      "required": true,
+      "default": "1 Tsp / 8 Oz"
+    },
+    "ingredients": {
+      "type": "string",
+      "required": true
+    },
+    "flavor": {
+      "type": "string",
+      "required": true
+    },
+    "review": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::review.review",
+      "inversedBy": "products"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+//Breakpoints for forming queries for different modes: mobile, tablet, desktop
+$width-desktop: 1024px;
+$width-tablet: 768px;
+$width-mobile: 414px;
+
+//width of useful content
+$maxWidth-content: 1420px;
+
+//colors
+$color-accent: #171d20;
+$color-base: #ffffff;
+$color-base-dark: rgba(255, 255, 255, 0.66);
+$color-grey-light: lightgrey;
+$color-accent-light: #3e3d3c;
+$color-neutral: #87a9bc;
+$color-neutral-light: #dbdbdb;
+$color-neutral-dark: #d9dfe2;
+$color-danger: rgb(240, 121, 121);
+
+//font-family
+$font-family: "Jost", sans-serif;
+$sub-font-family: "Playfair Display", serif;
+
+//font-size
+$fontSize-base: 15px;
+$fontSize-heading1: 52px;
+$fontSize-heading2: 38px;
+$fontSize-heading3: 32px;
+$fontSize-heading4: 26px;
+$fontSize-heading5: 18px;
+
+//font-weight
+$weight-base: 400;
+$weight-light: 300;
+$weight-bold: 500;
+$weight-maxbold: 900;

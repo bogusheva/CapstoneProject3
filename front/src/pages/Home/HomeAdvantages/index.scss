@@ -1,0 +1,24 @@
+.home-advantages {
+  max-width: $maxWidth-content;
+  display: flex;
+  @include small-mobile-view {
+    flex-direction: column;
+  }
+
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 70px 5px;
+  text-align: center;
+  text-transform: capitalize;
+  @include tablet-view {
+    padding: 105px 20px;
+    text-align: left;
+    gap: 80px;
+  }
+  @include desktop-view {
+    padding: 140px 20px;
+    gap: 116px;
+  }
+}

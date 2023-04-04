@@ -1,0 +1,132 @@
+.button {
+  background-color: $color-base;
+  font-family: $font-family;
+  line-height: 1.47;
+  letter-spacing: 0.02em;
+  color: $color-accent;
+  padding: 10px 50px;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid $color-accent;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background-color: $color-accent;
+  color: $color-base;
+  border: 1px solid $color-base;
+  text-decoration: none;
+}
+
+.button.black {
+  background-color: $color-accent;
+  color: $color-base;
+  border: 1px solid $color-base;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: $color-base;
+    color: $color-accent;
+    border: 1px solid $color-accent;
+  }
+}
+
+.button-scroll {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid $color-accent;
+  color: $color-accent;
+  background-color: $color-base-dark;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-base-dark;
+    background-color: $color-accent;
+    border: 1px solid $color-base-dark;
+  }
+}
+
+.button-scroll.reverse {
+  position: fixed;
+  bottom: 0;
+  left: 90vw;
+  z-index: 1000;
+  @include small-mobile-view {
+    left: 85vw;
+  }
+  @include tablet-view {
+    left: 95vw;
+  }
+  border: 1px solid $color-accent;
+  color: $color-accent;
+  background-color: $color-base-dark;
+  &:hover {
+    color: $color-base-dark;
+    background-color: $color-accent;
+    border: 1px solid $color-base-dark;
+  }
+}
+
+.button-left {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid $color-accent;
+  color: $color-accent;
+  background-color: $color-base-dark;
+  font-size: 20px;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-base-dark;
+    background-color: $color-accent;
+    border: 1px solid $color-base-dark;
+  }
+}
+
+.video-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 150;
+  width: 90px;
+  height: 90px;
+  background-color: $color-base-dark;
+  border-radius: 50%;
+  border: 1px solid $color-accent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-base-dark;
+    border: 1px solid $color-base-dark;
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon-play3,
+  .icon-pause2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    transform: translate(-50%, -50%);
+  }
+}

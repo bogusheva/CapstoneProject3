@@ -1,0 +1,46 @@
+.article {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: $color-accent;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: justify;
+  @include small-mobile-view {
+    padding: 8px;
+  }
+
+  @include tablet-view {
+    padding: 20px 40px;
+    gap: 20px;
+  }
+
+  .img-holder {
+    @include small-mobile-view {
+      width: 0;
+      padding: 0;
+    }
+    @include tablet-view {
+      width: 400px;
+      float: left;
+      padding-right: 15px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .article-text p {
+    font-size: 1.3rem;
+    padding-bottom: 15px;
+  }
+}

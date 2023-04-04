@@ -1,0 +1,170 @@
+.weather-choice-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  @include tablet-view {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @include desktop-view {
+    justify-content: space-around;
+  }
+
+  .weather-block-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $color-base-dark;
+    padding: 20px;
+    gap: 10px;
+    @include small-mobile-view {
+      gap: 15px;
+    }
+    @include tablet-view {
+      min-height: 430px;
+      max-width: 300px;
+    }
+    @include desktop-view {
+      max-width: 400px;
+      gap: 30px;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      width: 90%;
+    }
+    blockquote h3 {
+      font-size: 1rem;
+      margin: 0 auto;
+      @include tablet-view {
+        max-width: 90%;
+      }
+      @include desktop-view {
+        max-width: 80%;
+        font-size: 1rem;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input[type="search"] {
+        padding: 10px 20px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .weather-description-block {
+      width: 100%;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      gap: 13px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-align: center;
+      li img {
+        @include tablet-view {
+          width: 60px;
+        }
+        @include desktop-view {
+          width: 100px;
+        }
+      }
+
+      .mug-icon {
+        width: 100px;
+        height: 100px;
+        animation-name: spinner-animation;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+        img {
+          width: 100%;
+        }
+      }
+
+      @keyframes spinner-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+  .surprise-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $color-base-dark;
+    padding: 20px;
+    gap: 30px;
+    min-height: 430px;
+    @include tablet-view {
+      max-width: 300px;
+    }
+    @include desktop-view {
+      max-width: 400px;
+    }
+
+    .item-container {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .mug-icon {
+        width: 250px;
+        height: 250px;
+        animation-name: mug-animation;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        img {
+          width: 100%;
+        }
+      }
+
+      @keyframes mug-animation {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+
+    blockquote h3::before {
+      content: "\201C";
+    }
+
+    blockquote h3::after {
+      content: "\201D";
+    }
+  }
+}
