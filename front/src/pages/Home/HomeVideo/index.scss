@@ -1,0 +1,25 @@
+.home-video {
+  position: relative;
+
+  .video-holder {
+    width: 100%;
+    min-height: 50vh;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba($color: $color-accent, $alpha: 0.8);
+  }
+
+  .video-bg {
+    min-height: 1050px;
+    @include small-mobile-view {
+      min-height: 900px;
+    }
+  }
+}

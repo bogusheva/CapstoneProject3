@@ -1,0 +1,95 @@
+.products-block-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 10px 0 30px;
+}
+
+.filter-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 6fr);
+  gap: 10px;
+  justify-items: stretch;
+
+  @include tablet-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  @include desktop-view {
+    max-width: $maxWidth-content;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  div {
+    display: flex;
+    @include tablet-view {
+      width: 24%;
+    }
+  }
+
+  .button {
+    width: 100%;
+    text-transform: none;
+    padding: 10px;
+    @include tablet-view {
+      width: 24%;
+    }
+  }
+  .button.small {
+    width: 50%;
+  }
+
+  input.button,
+  select.button {
+    @include tablet-view {
+      width: 24%;
+    }
+
+    &:hover {
+      background-color: $color-base-dark;
+      transform: scale(1);
+      border: 1px solid $color-accent;
+      color: $color-accent;
+    }
+  }
+  select.button {
+    @include tablet-view {
+      padding: 10px 20px;
+    }
+  }
+}
+
+.products-container {
+  max-width: $maxWidth-content;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+
+  grid-template-columns: repeat(2, 6fr);
+  @include small-mobile-view {
+    padding: 0 5px;
+    grid-template-columns: repeat(1, 12fr);
+  }
+  @include tablet-view {
+    grid-template-columns: repeat(3, 4fr);
+  }
+  @include desktop-view {
+    padding: 0 20px;
+    grid-template-columns: repeat(4, 3fr);
+  }
+
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  a {
+    color: $color-accent;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

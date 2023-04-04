@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  functions = "build"
+  env = { STRAPI_URL = "http://localhost:1337" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

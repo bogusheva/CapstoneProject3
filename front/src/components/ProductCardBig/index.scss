@@ -1,0 +1,238 @@
+.product-item-page {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  color: $color-accent;
+  padding: 20px 20px 30px;
+  @include tablet-view {
+    gap: 50px;
+    padding: 20px 20px 80px;
+    max-width: $maxWidth-content;
+  }
+
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    @include tablet-view {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 30px;
+    }
+    @include desktop-view {
+      gap: 50px;
+      padding: 0 20px;
+    }
+
+    .item-description-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      justify-items: center;
+      gap: 20px;
+      @include tablet-view {
+        width: 60%;
+        gap: 30px;
+      }
+
+      .item-main-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 30px;
+        @include small-mobile-view {
+          padding-top: 50px;
+        }
+        @include tablet-view {
+          gap: 20px;
+          align-items: flex-start;
+          justify-content: space-between;
+          padding-top: 0;
+        }
+        @include desktop-view {
+          gap: 35px;
+        }
+        h2 {
+          font-weight: $weight-maxbold;
+          text-align: left;
+        }
+        p {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-align: justify;
+          font-size: 1rem;
+          @include tablet-view {
+            font-size: 1.2rem;
+          }
+          @include desktop-view {
+            font-size: 1.4rem;
+          }
+        }
+        .stars-container {
+          padding: 15px 0;
+        }
+
+        .button {
+          align-self: center;
+          @include small-mobile-view {
+            padding: 10px 20px;
+          }
+          @include tablet-view {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+          }
+          @include desktop-view {
+            font-size: 1.4rem;
+          }
+        }
+        .button-left {
+          right: 0;
+        }
+      }
+    }
+  }
+  .reviews-container {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    @include tablet-view {
+      gap: 30px;
+    }
+    .reviews-block {
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(1, 12fr);
+
+      @include tablet-view {
+        grid-template-columns: repeat(3, 4fr);
+      }
+      .card-item {
+        max-width: 400px;
+        padding: 5px;
+        justify-content: flex-start;
+        .card-text {
+          font-size: 1rem;
+          @include tablet-view {
+            font-size: 1.1rem;
+            max-width: 300px;
+          }
+          @include desktop-view {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}
+.item-slider-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+
+  @include tablet-view {
+    width: 40%;
+  }
+
+  .small-images-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .main-photo-container {
+    position: relative;
+
+    img {
+      width: 100%;
+      @include small-mobile-view {
+      }
+    }
+
+    .heart-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-50%, 50%);
+      cursor: pointer;
+
+      .icon-heart-broken,
+      .icon-heart {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+.item-additional-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  @include small-mobile-view {
+    padding-bottom: 15px;
+  }
+
+  h4 {
+    @include small-mobile-view {
+      text-align: center;
+      padding-top: 15px;
+    }
+  }
+
+  .instructions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+
+    @include desktop-view {
+      justify-content: center;
+      gap: 85px;
+    }
+
+    .instruction-card {
+      height: 100%;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+      text-align: center;
+      font-size: 1rem;
+      @include small-mobile-view {
+        font-size: 0.8rem;
+      }
+      span {
+        display: block;
+      }
+    }
+
+    [class^="icon-"] {
+      font-size: 1.4rem;
+      color: $color-neutral;
+    }
+  }
+}

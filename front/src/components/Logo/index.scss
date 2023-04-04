@@ -1,0 +1,30 @@
+.logo-holder {
+  width: fit-content;
+  font-family: $sub-font-family;
+  font-weight: $weight-base;
+  letter-spacing: 0.06em;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  @include small-mobile-view {
+    padding-left: 35px;
+    font-size: 1rem;
+  }
+  @include tablet-view {
+    font-size: 2rem;
+    text-align: center;
+    max-width: 200px;
+  }
+  @include desktop-view {
+    max-width: 350px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $color-base;
+  }
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}

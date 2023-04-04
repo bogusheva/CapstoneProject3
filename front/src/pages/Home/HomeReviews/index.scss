@@ -1,0 +1,24 @@
+.home-reviews {
+  max-width: $maxWidth-content;
+  margin: 0 auto;
+  padding: 70px 5px;
+  @include tablet-view {
+    padding: 105px 20px;
+  }
+  @include tablet-view {
+    padding: 140px 20px;
+  }
+
+  .home-reviews-heading {
+    padding-bottom: 40px;
+  }
+
+  .reviews-slider {
+    display: block;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: $color-accent !important;
+  }
+}

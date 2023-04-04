@@ -1,0 +1,57 @@
+.right-navbar {
+  width: 80px;
+  position: absolute;
+  right: 12px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.07rem;
+  line-height: 2;
+
+  @include small-mobile-view {
+    right: 10px;
+    width: 65px;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  @include tablet-view {
+    width: 270px;
+    position: static;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 1rem;
+  }
+  @include desktop-view {
+    width: 348px;
+    justify-content: flex-end;
+    gap: 25px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: $color-base;
+    &.active {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+  }
+
+  a:hover,
+  span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .icon-enter,
+  .icon-exit {
+    color: $color-base;
+    line-height: 2;
+  }
+
+  .not-mobile-view {
+    @include tablet-view {
+      padding-left: 5px;
+    }
+  }
+}

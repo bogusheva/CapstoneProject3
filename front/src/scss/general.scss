@@ -1,0 +1,154 @@
+:root {
+  font-size: $fontSize-base;
+}
+
+.body-container {
+  width: 100%;
+  font-family: $font-family;
+  font-weight: $weight-base;
+}
+
+.not-mobile-view {
+  display: none;
+  visibility: hidden;
+
+  @include tablet-view {
+    display: inline;
+    visibility: visible;
+  }
+}
+
+a {
+  color: $color-base;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-family: $font-family;
+  @include small-mobile-view {
+    font-size: $fontSize-heading2;
+  }
+  font-size: $fontSize-heading1;
+  font-weight: $weight-light;
+  line-height: 1.38;
+  letter-spacing: 0em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-family: $sub-font-family;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: $weight-base;
+  line-height: 1.26;
+  letter-spacing: 0em;
+  text-align: center;
+  text-transform: capitalize;
+  @include small-mobile-view {
+    font-size: 1.6rem;
+  }
+  @include tablet-view {
+    font-size: $fontSize-heading4;
+  }
+  @include desktop-view {
+    font-size: $fontSize-heading2;
+  }
+}
+
+h3 {
+  font-family: $sub-font-family;
+  font-size: $fontSize-heading4;
+  font-style: italic;
+  font-weight: $weight-base;
+  line-height: 1.28;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: capitalize;
+  @include small-mobile-view {
+    font-size: 1.2rem;
+  }
+  @include tablet-view {
+    font-size: $fontSize-heading3;
+  }
+}
+
+h4 {
+  line-height: 1.1;
+  letter-spacing: 0em;
+  text-align: left;
+  font-weight: $weight-base;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  @include tablet-view {
+    font-size: $fontSize-heading5;
+  }
+}
+
+h5 {
+  font-family: $font-family;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: $weight-base;
+  line-height: 1;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: capitalize;
+  @include tablet-view {
+    font-size: $fontSize-heading5;
+  }
+}
+
+.help-section {
+  background-image: url("../assets/images/help-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  .help-section-container {
+    width: 100vw;
+    padding: 60px 20px 50px;
+    color: $color-base;
+    @include tablet-view {
+      width: 80vw;
+      padding: 80px 20px 50px;
+    }
+    @include desktop-view {
+      width: 75vw;
+      padding: 120px 20px 50px;
+    }
+  }
+
+  .article-heading {
+    padding-bottom: 10px;
+  }
+  .article-subheading {
+    padding-bottom: 10px;
+    @include tablet-view {
+      padding-bottom: 20px;
+    }
+    @include desktop-view {
+      padding-bottom: 10px;
+    }
+  }
+  .article-text {
+    font-size: 0.9rem;
+    text-align: justify;
+    padding-bottom: 15px;
+    @include tablet-view {
+      font-size: 1rem;
+    }
+    @include desktop-view {
+      font-size: 1.3rem;
+    }
+  }
+}

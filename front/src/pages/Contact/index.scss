@@ -1,0 +1,88 @@
+.contact-section {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url("../../assets/images/contact-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: fit-content;
+  min-height: 100vh;
+  color: $color-base;
+  font-size: 1rem;
+  padding: 0 5px 20px;
+  @include tablet-view {
+    font-size: 1.4rem;
+  }
+  @include desktop-view {
+    padding: 0 20px 60px;
+  }
+
+  h1 {
+    padding: 60px 0 20px;
+    text-align: center;
+    @include tablet-view {
+      padding: 100px 0 20px;
+    }
+    @include desktop-view {
+      padding: 120px 0 20px;
+    }
+  }
+
+  .contact-container {
+    max-width: $width-tablet;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+    @include tablet-view {
+      padding: 0 30px;
+    }
+    @include desktop-view {
+      max-width: $maxWidth-content;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    iframe {
+      width: 100%;
+      @include tablet-view {
+        width: 500px;
+      }
+      @include desktop-view {
+        width: 550px;
+      }
+    }
+
+    h3 {
+      padding-bottom: 20px;
+    }
+
+    .contacts-holder {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      @include tablet-view {
+        gap: 10px;
+      }
+      padding-bottom: 15px;
+
+      span {
+        margin-right: 20px;
+        @include tablet-view {
+          margin-right: 50px;
+        }
+      }
+    }
+  }
+  .forms-section {
+    max-width: 100%;
+    margin: 0 auto;
+    @include tablet-view {
+      margin: 0;
+    }
+  }
+}
